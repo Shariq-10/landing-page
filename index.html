@@ -32,6 +32,25 @@ body {
   background-color: #000;
   overflow-x: hidden;
 }
+.hero {
+  background-image: 
+      linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),
+      url("https://www.kdpublishingrights.com/assets/images/no_harry.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* Text center rakhne ke liye */
+.hero .hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: #fff;
+  text-align: center;
+}
 p {
   transition: 0.3s ease-in-out;
 }
@@ -184,6 +203,7 @@ nav .container-fluid {
   padding: 0 4rem;
 }
 header {
+  
   position: absolute;
   width: 100%;
   background: rgba(38, 38, 38, 0.68);
@@ -255,7 +275,7 @@ nav .navbar-toggler {
 
 /* hero section css */
 .hero {
-  background-image: url(../images/no_harry.webp);
+  background-image: url(https://www.kdpublishingrights.com/assets/images/no_harry.webp);
   background-size: contain;
   background-position: top center;
   background-repeat: no-repeat;
@@ -419,6 +439,31 @@ nav .navbar-toggler {
   position: absolute;
   bottom: 30px;
   right: 30px;
+}
+
+/* Slider container */
+.services_slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
+}
+
+/* Each slide */
+.services_slider .service_bx {
+    min-width: calc(33.333% - 13.33px); /* 3 cards visible */
+    scroll-snap-align: start;
+}
+
+/* Hide scrollbar */
+.services_slider::-webkit-scrollbar {
+    display: none;
+}
+.services_slider {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 /* services css */
 
@@ -755,126 +800,187 @@ section.content_sect img {
 /* process css */
 
 /* testimonials css */
+/* 🔶 Testimonial Section – Exact Live Copy 🔶 */
 .testimonial_wrapper {
-  padding: 0 50px;
+    padding: 0 50px;
 }
+
 .testimonials {
-  padding: 80px 0;
-  border: 2px solid #828282;
-  border-radius: 50px;
-  position: relative;
-  overflow: hidden;
+    padding: 80px 0;
+    border-radius: 50px;
+    position: relative;
+    overflow: hidden;
+    border: 2px solid #828282;
+    background: #0d0d0d; /* dark layer */
 }
 
 .testimonials::before {
-  content: "";
-  position: absolute;
-  height: 50%;
-  bottom: -20%;
-  left: 50%;
-  width: 100%;
-  background: #ff6600;
-  transform: translateX(-50%);
-  filter: blur(199.4px);
-  z-index: -1;
+    content: "";
+    position: absolute;
+    width: 200%;
+    height: 700px; /* wide glow */
+    top: -300px;
+    left: -50%;
+    background: #ff6600;
+    filter: blur(300px); /* big orange glow exactly like site */
+    z-index: -1;
+    opacity: 0.6;
 }
+
+/* Headings */
 .testimonials h2 {
-  font-size: 48px;
-  font-weight: bold;
-  margin-bottom: 20px;
+    font-size: 48px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin-bottom: 20px;
 }
 .testimonials h2 + p {
-  font-size: 18px;
-  color: #999999;
+    font-size: 18px;
+    color: #999999;
+    text-align: center;
+    margin-bottom: 40px;
 }
 
-.review_slider .slick-slide {
-  padding: 20px;
+/* Slider container */
+.review_slider {
+    display: flex;
+    gap: 25px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-left: 20px;
+    padding-bottom: 20px;
 }
+
+/* Hide scrollbar */
+.review_slider::-webkit-scrollbar {
+    display: none;
+}
+.review_slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 20px;
+    padding-left: 0; /* remove extra padding */
+}
+
+/* Each testimonial card */
+.review_slider .review_card {
+    flex: 0 0 calc((100% - 40px) / 3); /* 3 cards visible exactly, 40px = gap*2 */
+    scroll-snap-align: start;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* ➤ Each testimonial card style */
 .review_card {
-  background: linear-gradient(
-    141.07deg,
-    rgba(33, 33, 33, 0.39) 0%,
-    rgba(23, 23, 23, 0.39) 100%
-  );
-  border: 1px solid #333;
-  border-radius: 16px;
-  padding: 40px;
-  position: relative;
-  transition: 0.3s;
-  height: 100%;
+    background: linear-gradient(
+      141.07deg,
+      rgba(33, 33, 33, 0.39) 0%,
+      rgba(23, 23, 23, 0.39) 100%
+    );
+    border: 1px solid #333;
+    border-radius: 16px;
+    padding: 35px 30px;
+    min-width: 330px; /* 3 visible */
+    scroll-snap-align: start;
+    transition: 0.3s ease;
 }
 
+/* Hover card effect */
 .review_card:hover {
-  border-color: #ff6600;
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border-color: #ff6600;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+    transform: translateY(-6px);
 }
+
+/* Active card (if slick slider in use) */
 .review_slider .slick-current .review_card {
-  background: linear-gradient(141.07deg, #212121 0%, #171717 100%);
-  border-color: #ff6600;
-  transform: scale(1.05); /* Optional: slight scale up for emphasis */
+    background: linear-gradient(
+        141.07deg,
+        #212121 0%, 
+        #171717 100%
+    );
+    border-color: #ff6600;
+    transform: scale(1.05);
 }
+
+/* Quote icon */
 .quote_icon {
-  width: 40px;
-  margin-bottom: 20px;
-  opacity: 0.8;
+    width: 42px;
+    opacity: 0.8;
+    margin-bottom: 18px;
 }
+
+/* Stars */
 .stars {
-  color: #ff6600;
-  margin-bottom: 20px;
-  font-size: 18px;
+    color: #ff6600;
+    font-size: 18px;
+    margin-bottom: 15px;
 }
+
+/* Review text */
 .review_text {
-  font-size: 16px;
-  line-height: 1.6;
-  color: #999999;
-  margin-bottom: 30px;
-  font-style: normal;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #999999;
+    margin-bottom: 28px;
 }
+
+/* User profile */
 .user_profile {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border-top: 1px solid #333;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding-top: 18px;
+    border-top: 1px solid #333;
 }
 .user_img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #ff6600;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid #ff6600;
+    object-fit: cover;
 }
 .user_profile h5 {
-  font-size: 18px;
-  margin: 0;
-  font-weight: 600;
-  color: #fff;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 600;
+    margin: 0;
 }
 .user_profile span {
-  font-size: 14px;
-  color: #999;
+    font-size: 14px;
+    color: #999;
 }
 
+/* Disclaimer note boxes */
 .rev_not {
-  background: rgb(0 0 0 / 70%);
-  border: 1px solid rgba(255, 102, 0, 0.2);
-  border-left: 4px solid #ff6600;
-  padding: 20px 30px;
-  border-radius: 8px;
-  margin: 0 auto;
+    margin: 35px auto 0 auto;
+    max-width: 900px;
+    padding: 20px 28px;
+    background: rgba(0,0,0,0.7);
+    border: 1px solid rgba(255,102,0,0.2);
+    border-left: 4px solid #ff6600;
+    border-radius: 8px;
 }
 .rev_not p {
-  margin: 0;
-  font-size: 15px;
-  color: #b0b0b0;
-  line-height: 1.6;
+    margin: 0;
+    font-size: 15px;
+    color: #b0b0b0;
+    line-height: 1.6;
 }
 .rev_not strong {
-  color: #ff6600;
-  font-weight: 600;
+    color: #ff6600;
+    font-weight: 600;
+}
+
+/* Mobile / Tablet */
+@media (max-width: 992px) {
+    .review_card { min-width: 300px; }
+}
+@media (max-width: 768px) {
+    .review_card { min-width: 90%; }
 }
 /* testimonials css */
 
@@ -2014,12 +2120,12 @@ body {
                         through the self-publishing process while they retain full ownership and control of their work.</p>
                     <div class="btn_wrapper">
                         <a href="javascript:void(0)" class="orange_btn open_modal">Start Your Journey <img
-                                src="https://www.kdpublishingrights.com/assets/images/star.svg" alt="Arrow" class="img-fluid"></a>
+                                src="https://www.kdpublishingrights.com/assets/images/arrow.svg" alt="Arrow" class="img-fluid"></a>
                         <a href="javascript:void(0)" class="dark_btn chat_btn"><i class="bi bi-chat"></i>
                             Chat With a Specialist</a>
                     </div>
                 </div>
-            </div>
+            </div>  
             <div class="hero-form">
         <div class="row justify-content-center">
             <div class="col-lg-10" data-aos="zoom-in">
@@ -2098,13 +2204,13 @@ body {
                 </div>
                 <div class="col-lg-6 text-xl-end text-lg-end text-center" data-aos="fade-up">
                     <a href="javascript:void(0)" class="orange_btn open_modal">Talk to a Publishing Expert <img
-                            src="assets/images/arrow.svg" alt="Arrow" class="img-fluid"></a>
+                            src="https://www.kdpublishingrights.com/assets/images/arrow.svg" alt="Arrow" class="img-fluid"></a>
                 </div>
             </div>
             <div class="services_slider mt-5">
                 <div class="item">
                     <div class="service_bx">
-                        <img src="https://www.kdpublishingrights.com/assets/images/serv1.webp" alt="Professional Editing" class="img-fluid">
+                        <img src="https://www.kdpublishingrights.com/assets/images/serv1.webp" alt="Professional Editing" class="img-fluid"class="card_logo">
                         <div class="service_content">
                             <h5>Professional Editing</h5>
                             <ul>
@@ -2114,13 +2220,13 @@ body {
                                 <li>Developmental Editing</li>
                                 <li>Proofreading</li>
                             </ul>
-                            <img src="https://www.kdpublishingrights.com/assets/images/pen.svg" alt="Pen" class="img-fluid">
+                            <img src="https://www.kdpublishingrights.com/assets/images/pen.svg" alt="Pen" class="img-fluid" class="card_logo">
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <div class="service_bx">
-                        <img src="https://www.kdpublishingrights.com/assets/images/serv2.webp" alt="Cover Design" class="img-fluid">
+                        <img src="https://www.kdpublishingrights.com/assets/images/serv2.webp" alt="Cover Design" class="img-fluid" class="card_logo">
                         <div class="service_content">
                             <h5>Cover Design</h5>
                             <ul>
@@ -2130,13 +2236,13 @@ body {
                                 <li>Genre-Specific Styling</li>
                                 <li>Multiple Revisions</li>
                             </ul>
-                            <img src="https://www.kdpublishingrights.com/assets/images/palette.svg" alt="Palette" class="img-fluid">
+                            <img src="https://www.kdpublishingrights.com/assets/images/palette.svg" alt="Palette" class="img-fluid" class="card_logo">
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <div class="service_bx">
-                        <img src="https://www.kdpublishingrights.com/assets/images/serv3.webp" alt="Formatting & Layout" class="img-fluid">
+                        <img src="https://www.kdpublishingrights.com/assets/images/serv3.webp" alt="Formatting & Layout" class="img-fluid"class="card_logo">
                         <div class="service_content">
                             <h5>Formatting & Layout</h5>
                             <ul>
@@ -2146,13 +2252,13 @@ body {
                                 <li>Typesetting</li>
                                 <li>Ready-for-Publication Files</li>
                             </ul>
-                            <img src="https://www.kdpublishingrights.com/assets/images/layout.svg" alt="layout" class="img-fluid">
+                            <img src="https://www.kdpublishingrights.com/assets/images/layout.svg" alt="layout" class="img-fluid"class="card_logo" >
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <div class="service_bx">
-                        <img src="https://www.kdpublishingrights.com/assets/images/serv4.webp" alt="Publishing Setup" class="img-fluid">
+                        <img src="https://www.kdpublishingrights.com/assets/images/serv4.webp" alt="Publishing Setup" class="img-fluid"class="card_logo">
                         <div class="service_content">
                             <h5>Publishing Setup</h5>
                             <ul>
@@ -2162,13 +2268,13 @@ body {
                                 <li>Metadata Optimization</li>
                                 <li>Platform Strategy</li>
                             </ul>
-                            <img src="https://www.kdpublishingrights.com/assets/images/pen.svg" alt="Pen" class="img-fluid">
+                            <img src="https://www.kdpublishingrights.com/assets/images/pen.svg" alt="Pen" class="img-fluid"class="card_logo">
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <div class="service_bx">
-                        <img src="https://www.kdpublishingrights.com/assets/images/serv1.webp" alt="Book Marketing" class="img-fluid">
+                        <img src="https://www.kdpublishingrights.com/assets/images/serv1.webp" alt="Book Marketing" class="img-fluid"class="card_logo">
                         <div class="service_content">
                             <h5>Book Marketing</h5>
                             <ul>
@@ -2178,13 +2284,13 @@ body {
                                 <li>Email Campaigns</li>
                                 <li>Promotional Materials</li>
                             </ul>
-                            <img src="https://www.kdpublishingrights.com/assets/images/pen.svg" alt="Pen" class="img-fluid">
+                            <img src="https://www.kdpublishingrights.com/assets/images/pen.svg" alt="Pen" class="img-fluid"class="card_logo">
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <div class="service_bx">
-                        <img src="https://www.kdpublishingrights.com/assets/images/serv2.webp" alt="Author Website" class="img-fluid">
+                        <img src="https://www.kdpublishingrights.com/assets/images/serv2.webp" alt="Author Website" class="img-fluid"class="card_logo">
                         <div class="service_content">
                             <h5>Author Website</h5>
                             <ul>
@@ -2194,13 +2300,13 @@ body {
                                 <li>Email List Building</li>
                                 <li>Mobile Optimization</li>
                             </ul>
-                            <img src="https://www.kdpublishingrights.com/assets/images/palette.svg" alt="Palette" class="img-fluid">
+                            <img src="https://www.kdpublishingrights.com/assets/images/palette.svg" alt="Palette" class="img-fluid"class="card_logo">
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <div class="service_bx">
-                        <img src="https://www.kdpublishingrights.com/assets/images/serv3.webp" alt="Audiobook" class="img-fluid">
+                        <img src="https://www.kdpublishingrights.com/assets/images/serv3.webp" alt="Audiobook" class="img-fluid"class="card_logo">
                         <div class="service_content">
                             <h5>Audiobook</h5>
                             <ul>
@@ -2210,13 +2316,13 @@ body {
                                 <li>Quality Assurance Testing</li>
                                 <li>Accent & Pronunciation Guidance</li>
                             </ul>
-                            <img src="https://www.kdpublishingrights.com/assets/images/layout.svg" alt="layout" class="img-fluid">
+                            <img src="https://www.kdpublishingrights.com/assets/images/layout.svg" alt="layout" class="img-fluid"class="card_logo">
                         </div>
                     </div>
                 </div>
                 <div class="item">
                     <div class="service_bx">
-                        <img src="https://www.kdpublishingrights.com/assets/images/serv4.webp" alt="Book Formatting" class="img-fluid">
+                        <img src="https://www.kdpublishingrights.com/assets/images/serv4.webp" alt="Book Formatting" class="img-fluid"class="card_logo">
                         <div class="service_content">
                             <h5>Book Formatting</h5>
                             <ul>
@@ -2226,7 +2332,7 @@ body {
                                 <li>MOBI Format Creation</li>
                                 <li>Print-Ready PDF Files</li>
                             </ul>
-                            <img src="https://www.kdpublishingrights.com/assets/images/pen.svg" alt="Pen" class="img-fluid">
+                            <img src="https://www.kdpublishingrights.com/assets/images/pen.svg" alt="Pen" class="img-fluid" class="card_logo">
                         </div>
                     </div>
                 </div>
@@ -3111,6 +3217,87 @@ body {
     }
 
 });
+
+
+$(document).ready(function(){
+  $('.services_slider').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    infinite: true,
+    arrows: true,
+    dots: false,
+    autoplay: false,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  });
+});
+$(document).ready(function(){
+  $('.services_slider').slick({
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    infinite: true,
+    arrows: false,  // ✅ arrows remove
+    dots: false,
+    autoplay: false,
+    responsive: [
+      {
+        breakpoint: 992,
+        settings: {
+          slidesToShow: 2
+        }
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1
+        }
+      }
+    ]
+  });
+});
+const slider = document.querySelector('.review_slider');
+slider.addEventListener('wheel', (evt) => {
+    evt.preventDefault();
+    slider.scrollBy({
+        left: evt.deltaY < 0 ? -300 : 300, // scroll left/right
+        behavior: 'smooth'
+    });
+});
+
+slider.addEventListener('mousedown', (e) => {
+    isDown = true;
+    slider.classList.add('active');
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
+});
+slider.addEventListener('mouseleave', () => {
+    isDown = false;
+    slider.classList.remove('active');
+});
+slider.addEventListener('mouseup', () => {
+    isDown = false;
+    slider.classList.remove('active');
+});
+slider.addEventListener('mousemove', (e) => {
+    if(!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const walk = (x - startX) * 2; //scroll-fast
+    slider.scrollLeft = scrollLeft - walk;
+});
+
 </script>
 <!-- Start of  Zendesk Widget script -->
 <script id="ze-snippet"
